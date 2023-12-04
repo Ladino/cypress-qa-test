@@ -1,0 +1,12 @@
+{
+  "name": "cypress-express-mark",
+  "version": "1.0.0",
+  "description": "Projeto de testes de ponta a ponta no Mark L",
+  "main": "index.js",
+  "author": "Lucas Teixeira",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "12.2.0",
+    "dotenv": "^16.3.1"
+  }
+}
