@@ -5,6 +5,8 @@ describe('Manipulação Trello via API', () => {
     let id_list;
     let id_card;
 
+    //Atualizar o cypress.env.json com sua api_key e seu api_token//
+
     it('Deve criar um novo board', () => {
         const name = 'Test board api trello';
         const apiKey = Cypress.env("api_key");
@@ -33,7 +35,7 @@ describe('Manipulação Trello via API', () => {
             url: `https://api.trello.com/1/lists?name=${listName}&idBoard=${id_board}&key=${apiKey}&token=${apiToken}`,
         }).then((response) => {
             expect(response.status).to.equal(200);
-            id_list = response.body.id; // Salva o id da lista na variável id_list
+            id_list = response.body.id;
             expect(response.body.name).to.equal(listName);
         });
     });
@@ -57,7 +59,7 @@ describe('Manipulação Trello via API', () => {
 
     })
 
-    it('Deve excluir o card criado', ()=>{
+    it('Deve excluir o card criado', () => {
         const apiKey = Cypress.env("api_key");
         const apiToken = Cypress.env("api_token");
 
@@ -66,12 +68,12 @@ describe('Manipulação Trello via API', () => {
         cy.request({
             method: 'DELETE',
             url: `https://api.trello.com/1/cards/${id_card}?key=${apiKey}&token=${apiToken}`,
-          }).then((response) => {
+        }).then((response) => {
             expect(response.status).to.equal(200);
-          });
+        });
     })
 
-    it('Deve excluir o board criado', ()=>{
+    it('Deve excluir o board criado', () => {
         const apiKey = Cypress.env("api_key");
         const apiToken = Cypress.env("api_token");
 
@@ -80,8 +82,8 @@ describe('Manipulação Trello via API', () => {
         cy.request({
             method: 'DELETE',
             url: `https://api.trello.com/1/boards/${id_board}?key=${apiKey}&token=${apiToken}`,
-          }).then((response) => {
+        }).then((response) => {
             expect(response.status).to.equal(200);
-          });
+        });
     })
 });
